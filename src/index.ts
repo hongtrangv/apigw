@@ -1,4 +1,5 @@
 import express from "express";
+console.log("Express version:", require("express/package.json").version);
 import cors, { CorsOptions } from "cors";
 import helmet from "helmet";
 import router from "./routes";
@@ -12,7 +13,6 @@ import { loadApis } from "./services/apiRegistryYaml";
 import { errorHandler } from "./middlewares/errorHandler";
 
 const app = express();
-console.log("Express version:", require("express/package.json").version);
 // Cấu hình CORS an toàn
 const allowedOrigins = process.env.CORS_ALLOWED_ORIGINS ? process.env.CORS_ALLOWED_ORIGINS.split(',') : [];
 
