@@ -1,0 +1,16 @@
+apis:
+  - id: ai-chat
+    name: AI Chat
+    path: /api/ai/chat
+    methods: [POST]
+    target: AI_SERVICE
+    rewrite: /chat
+    status: published   # draft | published | disabled | deprecated
+    scopes: [ai:chat]
+
+  - id: user-profile
+    name: User Profile
+    path: /api/core/users/:id
+    methods: [GET]
+    target: CORE_SERVICE
+    status: draft
