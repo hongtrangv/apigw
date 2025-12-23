@@ -1,5 +1,4 @@
 import express from "express";
-console.log("Express version:", require("express/package.json").version);
 import cors, { CorsOptions } from "cors";
 import helmet from "helmet";
 import router from "./routes";
@@ -11,6 +10,8 @@ import { oauthCheck } from "./middlewares/oauth";
 import { authorize } from "./middlewares/authorize";
 import { loadApis } from "./services/apiRegistryYaml";
 import { errorHandler } from "./middlewares/errorHandler";
+console.log("Node version:", process.version);
+console.log("Express version:", require("express/package.json").version);
 
 const app = express();
 // Cấu hình CORS an toàn
