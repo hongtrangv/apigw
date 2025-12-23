@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config();
+//dotenv.config();
 
 // Hàm trợ giúp để lấy và xác thực các biến môi trường
 function getEnv(key: string): string {
