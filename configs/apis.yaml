@@ -6,7 +6,7 @@ apis:
     target: AI_SERVICE
     rewrite: /chat
     status: published   # draft | published | disabled | deprecated
-    scopes: [ai:chat]
+    scopes: ["ai:chat"]
 
   - id: user-profile
     name: User Profile
