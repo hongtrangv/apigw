@@ -1,7 +1,6 @@
 import express from "express";
 import cors, { CorsOptions } from "cors";
 import helmet from "helmet";
-import morgan from "morgan";
 import routes from "./routes";
 import { config } from "./config";
 import { metricsMiddleware, metricsEndpoint } from "./middlewares/metrics";
@@ -32,7 +31,6 @@ loadApis();
 app.use(cors(corsOptions));
 app.use(helmet());
 app.use(express.json());
-app.use(morgan("combined"));
 app.use(requestLogger);
 app.use(metricsMiddleware);
 app.use(
