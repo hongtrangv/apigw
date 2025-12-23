@@ -1,7 +1,7 @@
 import express from "express";
 import cors, { CorsOptions } from "cors";
 import helmet from "helmet";
-import router from "./routes";
+import routers from "./routes";
 import { config } from "./config";
 import { metricsMiddleware, metricsEndpoint } from "./middlewares/metrics";
 import { requestLogger } from "./middlewares/requestLogger";
@@ -43,7 +43,7 @@ app.use(
 app.get("/health", (_, res) => res.json({ status: "ok" }));
 app.get("/metrics", metricsEndpoint);
 
-app.use("/api",router);
+app.use("/api",routers);
 
 // Thêm trình xử lý lỗi làm middleware cuối cùng
 app.use(errorHandler);
