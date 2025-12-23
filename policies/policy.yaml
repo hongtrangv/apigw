@@ -1,0 +1,41 @@
+version: "1.0"
+
+policies:
+  - id: ai-chat
+    description: Allow chat AI
+    effect: allow
+    routes:
+      - path: /api/ai/**
+        methods: [POST]
+    subjects:
+      roles: [user, admin]
+      scopes: ["ai:chat"]
+
+  - id: admin-core
+    description: Admin access core admin APIs
+    effect: allow
+    routes:
+      - path: /api/core/admin/**
+        methods: [GET, POST, PUT, DELETE]
+    subjects:
+      roles: [admin]
+
+  - id: user-own-profile
+    description: User can access own profile
+    effect: allow
+    routes:
+      - path: /api/core/users/{id}
+        methods: [GET, PUT]
+    subjects:
+      roles: [user, admin]
+    conditions:
+      - type: equals
+        left: request.params.id
+        right: user.sub
+
+  - id: deny-all
+    description: Default deny
+    effect: deny
+    routes:
+      - path: /**
+        methods: [GET, POST, PUT, DELETE]
